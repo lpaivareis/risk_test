@@ -41,10 +41,33 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
 
+  # Use rubocop to enforce a consistent code style and prevent common errors
   gem 'rubocop', '~> 1.60', '>= 1.60.2'
+
   gem 'rubocop-performance', '~> 1.20', '>= 1.20.2'
+
   gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
+
   gem 'rubocop-rspec', '~> 2.26', '>= 2.26.1'
+
+  # Use rspec for unit and integration tests
+  gem 'rspec', '~> 3.12'
+
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
+
+  gem 'faker', '~> 3.2', '>= 3.2.3'
+
+  gem 'shoulda-matchers', '~> 6.1'
+
+  gem 'database_cleaner-active_record', '~> 2.1'
+
+  # Use awesome_print for better console output
+  gem 'awesome_print', '~> 1.9', '>= 1.9.2'
+
+  # Use byebug as a debugger
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
