@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'csv'
 
 class ImportTransactionsService < ApplicationService
@@ -16,7 +17,6 @@ class ImportTransactionsService < ApplicationService
   private
 
   def import_transactions
-
     rows = CSV.read(file_path, headers: true)
     rows = rows.take(limit.to_i) if limit
 

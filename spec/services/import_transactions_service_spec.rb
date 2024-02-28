@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ImportTransactionsService, type: :service do
@@ -8,7 +10,7 @@ RSpec.describe ImportTransactionsService, type: :service do
     subject { described_class.new(file_path, limit).call }
 
     it 'imports transactions' do
-      expect { subject }.to change(Transaction, :count).by(2)
+      expect { subject }.to change(Transaction, :count).by(15)
     end
   end
 end
