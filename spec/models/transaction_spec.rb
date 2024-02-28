@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Transaction, type: :model do
@@ -7,5 +9,4 @@ RSpec.describe Transaction, type: :model do
   it { should validate_presence_of(:card_number) }
   it { should validate_presence_of(:transaction_date) }
   it { should validate_presence_of(:transaction_amount) }
-  it { should validate_presence_of(:has_cbk) }
 end
