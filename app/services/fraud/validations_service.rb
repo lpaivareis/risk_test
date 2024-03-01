@@ -7,7 +7,7 @@ module Fraud
         user_id:,
         transaction_date: 3.day.ago..Time.current,
         has_cbk: true
-      ).any?
+      ).exists?
     end
 
     def weekend?(transaction_date)
