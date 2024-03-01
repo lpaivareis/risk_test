@@ -1,24 +1,32 @@
-# README
+# Project Details
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Objective
 
-Things you may want to cover:
+This project is a small application for payment validation, where the user enters the payment data and the application returns if it is a purchase with a risk of fraud.
 
-* Ruby version
+## Configuração
 
-* System dependencies
+This project runs on Ruby version 3.3 using Rails 7.1.3. If needed, you can use a version manager to facilitate this, like [ASDF](https://www.lucascaton.com.br/2020/02/17/instalacao-do-ruby-do-nodejs-no-ubuntu-linux-usando-asdf).
 
-* Configuration
+In this project, we are using PostgreSQL. If you need to change them to run on your local machine, you can do so in [database.yml](config/database.yml).
 
-* Database creation
+To execute the project, follow the steps below:
 
-* Database initialization
+```console
+$ bundle install
+$ bin/rails db:create && db:migrate
+$ bin/rails s
+```
 
-* How to run the test suite
+For testing, we used RSpec and the gems shoulda-matchers, database cleaner, Faker, and FactoryBot. If you want to execute the application tests, use the command below:
 
-* Services (job queues, cache servers, search engines, etc.)
+```console
+$ bin/rails db:migrate RAILS_ENV=test
+$ bundle exec rspec
+```
 
-* Deployment instructions
+For code quality and linter, we used the gems rubocop, rubocop-rails, rubocop-rspec, and rubocop-performance. You can execute them using the command below:
 
-* ...
+```console
+$ bundle exec rubocop
+```
