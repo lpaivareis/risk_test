@@ -29,12 +29,15 @@ RSpec.describe TransactionsController, type: :controller do
     end
 
     it 'processes transaction successfully' do
-      allow(ProcessTransactionService).to receive(:call).and_return({ status: 'success' })
+      allow(ProcessTransactionService).to receive(:call).and_return({
+                                                                      transaction_id: '123',
+                                                                      recommendation: 'Approve'
+                                                                    })
 
       post :check_transaction, params: { transaction: transaction_params }
 
       expect(response).to have_http_status(:ok)
-      expect(response.body).to eq({ status: 'success' }.to_json)
+      expect(response.body).to eq({ transaction_id: '123', recommendation: 'Approve' }.to_json)
     end
   end
 end
