@@ -63,9 +63,6 @@ group :development, :test do
 
   gem 'database_cleaner-active_record', '~> 2.1'
 
-  # Use awesome_print for better console output
-  gem 'awesome_print', '~> 1.9', '>= 1.9.2'
-
   # Use byebug as a debugger
   gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
