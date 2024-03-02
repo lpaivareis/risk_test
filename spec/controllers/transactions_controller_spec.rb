@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TransactionsController, type: :controller do
+RSpec.describe TransactionsController do
   describe '#import_transactions' do
     let(:file) { fixture_file_upload('spec/fixtures/files/transactional-sample.csv', 'text/csv') }
     let(:limit) { 100 }

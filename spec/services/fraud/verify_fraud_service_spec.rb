@@ -9,11 +9,11 @@ RSpec.describe Fraud::VerifyFraudService do
 
     context 'when reprove transaction' do
       before do
-        allow(service).to receive(:validations).and_return(true)
+        allow(service).to have_receive(:validations).and_return(true)
       end
 
       it 'updates the transaction' do
-        expect(service).to receive(:update_transaction)
+        expect(service).to have_receive(:update_transaction)
         service.call
       end
 
@@ -24,11 +24,11 @@ RSpec.describe Fraud::VerifyFraudService do
 
     context 'when approve transaction' do
       before do
-        allow(service).to receive(:validations).and_return(false)
+        allow(service).to have_receive(:validations).and_return(false)
       end
 
       it 'does not update the transaction' do
-        expect(service).not_to receive(:update_transaction)
+        expect(service).not_to have_receive(:update_transaction)
         service.call
       end
 
