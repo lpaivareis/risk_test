@@ -21,4 +21,11 @@ Style/IfUnlessModifier:
 Layout/LineLength:
   Max: 198
 
+Rails/SkipsModelValidations:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Exclude:
+    - 'spec/**/*'
+
 

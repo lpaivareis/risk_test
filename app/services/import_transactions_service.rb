@@ -29,7 +29,8 @@ class ImportTransactionsService < ApplicationService
   end
 
   def create_transactions(data)
-    Transaction.insert_all(data)
+    valid_transactions = data.select { |params| Transaction.new(params).valid? }
+    Transaction.insert_all(valid_transactions)
   end
 
   def transaction_data(row)

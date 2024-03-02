@@ -4,18 +4,30 @@ require 'rails_helper'
 
 RSpec.describe TransactionsController do
   describe '#import_transactions' do
-    let(:file) { fixture_file_upload('spec/fixtures/files/transactional-sample.csv', 'text/csv') }
-    let(:limit) { 100 }
+    subject(:import_transactions) { post :import_transactions, params: { file:, limit: 100 } }
 
-    it 'imports transactions successfully' do
-      post :import_transactions, params: { file:, limit: }
+    let(:file) { fixture_file_upload('spec/fixtures/files/transactional-sample.csv', 'text/csv') }
+
+    it 'returns status 200' do
+      import_transactions
 
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'imports transactions successfully' do
+      import_transactions
+
       expect(response.body).to eq({ message: 'Transactions imported successfully' }.to_json)
     end
   end
 
   describe '#check_transaction' do
+    subject(:process_transaction) { post :check_transaction, params: { transaction: transaction_params } }
+
+    before do
+      allow(ProcessTransactionService).to receive(:call).and_return(service_response)
+    end
+
     let(:transaction_params) do
       {
         transaction_id: '123',
@@ -28,16 +40,23 @@ RSpec.describe TransactionsController do
       }
     end
 
-    it 'processes transaction successfully' do
-      allow(ProcessTransactionService).to receive(:call).and_return({
-                                                                      transaction_id: '123',
-                                                                      recommendation: 'Approve'
-                                                                    })
+    let(:service_response) do
+      {
+        transaction_id: '123',
+        recommendation: 'Approve'
+      }
+    end
 
-      post :check_transaction, params: { transaction: transaction_params }
+    it 'returns status 200' do
+      process_transaction
 
       expect(response).to have_http_status(:ok)
-      expect(response.body).to eq({ transaction_id: '123', recommendation: 'Approve' }.to_json)
+    end
+
+    it 'processes transaction successfully' do
+      process_transaction
+
+      expect(response.body).to eq(service_response.to_json)
     end
   end
 end

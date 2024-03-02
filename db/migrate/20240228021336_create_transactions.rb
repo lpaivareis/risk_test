@@ -10,7 +10,7 @@ class CreateTransactions < ActiveRecord::Migration[7.1]
       t.timestamp :transaction_date
       t.integer :transaction_amount
       t.integer :device_id
-      t.boolean :has_cbk, default: false
+      t.boolean :has_cbk, default: false, null: false
 
       t.timestamps
     end
