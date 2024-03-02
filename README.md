@@ -14,6 +14,8 @@ $ docker-compose build
 $ docker-compose up
 ```
 
+Before running the above commands, make sure the `docker-compose up` command is running.
+
 For testing, we used RSpec and the gems shoulda-matchers, database cleaner, Faker, and FactoryBot. If you want to execute the application tests, use the command below:
 
 ```console
