@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: db_password
+      POSTGRES_USER: db_user
+      POSTGRES_DB: risk_test
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["bash", "-c", "bundle exec rails db:migrate && rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"]
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: postgres://db_user:db_password@db:5432/risk_test
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
