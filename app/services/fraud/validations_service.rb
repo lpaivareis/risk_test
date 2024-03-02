@@ -3,11 +3,9 @@
 module Fraud
   class ValidationsService < ApplicationService
     def recent_refund?(user_id)
-      Transaction.where(
-        user_id:,
-        transaction_date: 3.day.ago..Time.current,
-        has_cbk: true
-      ).exists?
+      Transaction.exists?(user_id:,
+                          transaction_date: 3.days.ago..Time.current,
+                          has_cbk: true)
     end
 
     def weekend?(transaction_date)
