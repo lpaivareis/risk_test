@@ -31,12 +31,12 @@ $ docker-compose exec web bundle exec rubocop
 ## Endpoints
 Use an app like insomnia or postman, and add a file with the name file.You can use the body type as multipart form data.
 
-###Import transactions by csv:
+### Import transactions by csv:
 ```
 post /import_transactions
 ```
 
-###Check transaction:
+### Check transaction:
 Example:
 ```
 post /check_transaction
