@@ -27,3 +27,13 @@ For code quality and linter, we used the gems rubocop, rubocop-rails, rubocop-rs
 ```console
 $ docker-compose exec web bundle exec rubocop
 ```
+
+### Endpoints
+```console
+post /import_transactions
+```
+
+```console
+post /check_transaction
+```
+
