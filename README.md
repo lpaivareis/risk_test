@@ -29,11 +29,25 @@ $ docker-compose exec web bundle exec rubocop
 ```
 
 ### Endpoints
-```console
+Use an app like insomnia or postman, and add a file with the name file.You can use the body type as multipart form data.
+```
 post /import_transactions
 ```
 
-```console
+Example:
+```
 post /check_transaction
+```
+
+```
+{
+  "transaction_id" : 123456,
+  "merchant_id" : 987654,
+  "user_id" : 123456,
+  "card_number" : "434505******9116",
+  "transaction_date" : "2019-11-31T23:16:32.812632",
+  "transaction_amount" : 499,
+  "device_id" : 32142
+}
 ```
 
